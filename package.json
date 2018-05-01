@@ -1,0 +1,34 @@
+{
+  "name": "nano-stream-amqp",
+  "version": "0.1.0",
+  "description": "A tiny and performant process that streams block data from a Nano currency node to an AMQP (think: RabbitMQ) exchange",
+  "main": "app.js",
+  "homepage": "https://github.com/lukes/nano-stream-amqp",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "stream": "node stream.js",
+    "amqp": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lukes/nano-stream-amqp.git"
+  },
+  "keywords": [
+    "nano",
+    "rpc",
+    "cryptocurrency",
+    "currency",
+    "crypto",
+    "amqp",
+    "rabbit-mq",
+    "rabbitmq",
+    "socket"
+  ],
+  "author": "Luke Duncalfe",
+  "license": "MIT",
+  "dependencies": {
+    "amqp": "^0.2.6",
+    "nano-stream-x": "^0.1.0",
+    "node-ipc": "^9.1.1"
+  }
+}
