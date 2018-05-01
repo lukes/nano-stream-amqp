@@ -40,8 +40,7 @@ connection.on('error', function(e) {
 
 const publishCallback = (failed, error) => {
   if (failed) {
-    console.error(`Error encountered when publishing to exchange ${EXCHANGE}`);
-    console.error(error);
+    console.error(`Error encountered when publishing to exchange ${EXCHANGE}`, error);
   }
 };
 
