@@ -5,10 +5,9 @@
   "main": "app.js",
   "homepage": "https://github.com/lukes/nano-stream-amqp",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "stream": "node stream.js",
-    "amqp": "node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": "app.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/lukes/nano-stream-amqp.git"
@@ -28,7 +27,6 @@
   "license": "MIT",
   "dependencies": {
     "amqp": "^0.2.6",
-    "nano-stream-x": "^0.1.0",
     "node-ipc": "^9.1.1"
   }
 }

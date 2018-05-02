@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const amqp = require('amqp');
 const ipc = require('node-ipc');
 
