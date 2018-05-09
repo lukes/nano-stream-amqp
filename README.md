@@ -41,3 +41,7 @@ To set a routing key:
 Set a number of publishing options like `immediate`, `headers` and many more through the `publishing_opts` argument as a stringified JSON value. See the [node-ampq docs](https://github.com/postwait/node-amqp#exchangepublishroutingkey-message-options-callback) for full options.
 
     nano-stream-amqp publishing_opts='{"mandatory":true}'
+
+### Configure your Nano node to send data to nano-stream-x
+
+Your Nano node is easily configured to send block processing data to a server (in this case `nano-stream-x`). See the [wiki article](https://github.com/lukes/nano-stream-x/wiki/Configure-your-Nano-node-to-send-data-to-the-nano-stream-x) (external link) for how to set this up.
