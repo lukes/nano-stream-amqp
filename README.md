@@ -26,14 +26,18 @@ This will start a streaming server on `127.0.0.1:3000`. To override these:
 
     nano-stream-amqp
 
-Data will be sent to the default exchange `"amq.topic"`. To set a different default exchange:
+By default you will connect to `amqp://guest:guest@localhost:5672`. This URL includes authentication for your AMQP server in the format `amqp://<username>:<password>@<host>:<port>`. To connect to a different host, or with different credentials:
+
+    nano-stream-amqp host=amqp://my_user:my_pass@localhost:5672
+
+Data will be sent to the default exchange `amq.topic`. To set a different default exchange:
 
     nano-stream-amqp exchange=my_exchange
 
 To set a routing key:
 
-    nano-stream-amqp exchange=my_exchange routing_key=my_routing_key
+    nano-stream-amqp routing_key=my_routing_key
 
 Set a number of publishing options like `immediate`, `headers` and many more through the `publishing_opts` argument as a stringified JSON value. See the [node-ampq docs](https://github.com/postwait/node-amqp#exchangepublishroutingkey-message-options-callback) for full options.
 
-    nano-stream-amqp exchange=my_exchange publishing_opts="{'mandatory':true}"
+    nano-stream-amqp publishing_opts='{"mandatory":true}'
