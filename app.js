@@ -1,40 +1,27 @@
 #!/usr/bin/env node
 
 const amqp = require('amqp');
+const util = require('util');
 const ipc = require('node-ipc');
 
 ipc.config.id = 'nanoStreamAMQP';
 ipc.config.retry = 1500;
 
-let URL = 'amqp://guest:guest@localhost:5672';
-let EXCHANGE = 'amq.topic';
-let ROUTING_KEY = '';
-
-const PUBLISHING_OPTS = {
-};
-
-
-// Process any args passed in and overwrite defaults
-const args =  process.argv.slice(2);
-args.forEach((arg) => {
+const args = {};
+// Collect all args passed in
+process.argv.slice(2).forEach((arg) => {
   const [key, value] = arg.split('=');
-  switch (key) {
-  case 'publishing_opts':
-    Object.assign(PUBLISHING_OPTS, JSON.parse(value));
-    break;
-  case 'routing_key':
-    ROUTING_KEY = value;
-    break;
-  case 'url':
-    URL = value;
-    break;
-  case 'exchange':
-    EXCHANGE = value;
-    break;
-  }
+  args[key] = value;
 });
 
-const connection = amqp.createConnection({url: URL});
+console.log(args);
+
+const HOST = args.host || 'amqp://guest:guest@localhost:5672';
+const EXCHANGE = args.exchange || 'amq.topic';
+const ROUTING_KEY = args.routing_key || '';
+const PUBLISHING_OPTS = args.publishing_opts ? JSON.parse(args.publishing_opts) : {};
+
+const connection = amqp.createConnection({url: HOST});
 
 connection.on('error', function(e) {
   console.error('Error from amqp: ', e);
@@ -48,7 +35,8 @@ const publishCallback = (failed, error) => {
 
 // Wait for connection to become established
 connection.on('ready', function () {
-  console.debug(`Connected to ${URL}`);
+  console.debug('Connected to AMQP server');
+  console.debug(`Will publish to exchange ${EXCHANGE} with publishing opts ${util.inspect(PUBLISHING_OPTS)}`);
 
   const exchange = connection.exchange(EXCHANGE, { noDeclare: false, confirm: true });
 
