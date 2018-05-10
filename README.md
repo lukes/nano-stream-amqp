@@ -30,7 +30,7 @@ By default you will connect to `amqp://guest:guest@localhost:5672`. This URL inc
 
     nano-stream-amqp host=amqp://my_user:my_pass@localhost:5672
 
-Data will be sent to the default exchange `amq.topic`. To set a different default exchange:
+Data will be sent to the default exchange `amq.topic`. To set a different exchange:
 
     nano-stream-amqp exchange=my_exchange
 
