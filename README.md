@@ -1,6 +1,8 @@
 
 # nano-stream-amqp
 
+[![npm version](https://badge.fury.io/js/nano-stream-amqp.svg)](https://badge.fury.io/js/nano-stream-amqp)
+
 A tiny and performant client that streams block data from a [Nano currency](https://nano.org/) node to an AMQP exchange for use in things like RabbitMQ.
 
 It builds on the socket stream of block data set up by the [nano-stream-x](https://github.com/lukes/nano-stream-x) library.
